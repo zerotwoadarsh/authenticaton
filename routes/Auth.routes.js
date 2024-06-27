@@ -3,6 +3,9 @@ const createError = require('http-errors')
 const router = express.Router()
 const User = require('../models/User.model')
 const {authSchema} = require('../helpers/validation_schema')
+const { signAccessToken, signRefreshToken } = require('../helpers/jwt_helper')
+const { verifyRefreshToken } = require('../helpers/jwt_helper')
+const { verify } = require('jsonwebtoken')
 
 
 router.post('/register', async (req, res, next)=>{
